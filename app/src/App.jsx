@@ -14,13 +14,14 @@ class App extends Component {
   newSearch(input) {
     // perform twitter search
     this.setState.searchInput = input;
+    console.log(input);
   }
 
   render() {
     return (
       <div>
         <Search newSearch={this.newSearch}/>
-        this.searchInput
+        <h2>{this.state.searchInput}</h2>
       </div>
     );
   }
