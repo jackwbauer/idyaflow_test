@@ -61,9 +61,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <TwitterLogin loginUrl="http://localhost:3001/api/v1/auth/twitter"
+        {/* <TwitterLogin loginUrl="http://localhost:3001/api/v1/auth/twitter"
           onFailure={this.onFailed} onSuccess={this.onSuccess}
-          requestTokenUrl="http://localhost:3001/api/v1/auth/twitter/reverse" />
+          requestTokenUrl="http://localhost:3001/api/v1/auth/twitter/reverse" /> */}
         <Search newSearch={this.newSearch} />
         <TweetList tweets={this.state.searchResults}></TweetList>
       </div>
