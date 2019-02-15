@@ -9,9 +9,9 @@ class Search extends Component {
             input.value = '';
         }
         return (
-            <form className="searchForm" onSubmit={onSubmit}>
-                <input name="input" defaultValue="" placeholder="Enter your search here."/>
-                <button name="submit">Submit</button>
+            <form className="form-inline" onSubmit={onSubmit}>
+                <input className="form-control" type="text" name="input" placeholder="Enter your search here."/>
+                <button className="btn btn-primary" type="submit" name="submit">Submit</button>
             </form>
         )
     }
