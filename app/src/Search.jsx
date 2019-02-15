@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Form, Button } from 'react-bootstrap'
 
 class Search extends Component {
     render() {
@@ -9,10 +10,10 @@ class Search extends Component {
             input.value = '';
         }
         return (
-            <form className="form-inline" onSubmit={onSubmit}>
-                <input className="form-control" type="text" name="input" placeholder="Enter your search here."/>
-                <button className="btn btn-primary" type="submit" name="submit">Submit</button>
-            </form>
+            <Form className="form-inline searchBar" onSubmit={onSubmit}>
+                <Form.Control className="form-control" type="text" name="input" placeholder="Enter your search here."/>
+                <Button className="btn btn-primary" type="submit" name="submit">Submit</Button>
+            </Form>
         )
     }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Table from 'react-bootstrap/Table';
 import TweetComponent from './Tweet.jsx';
 
 class TweetList extends Component {
@@ -7,8 +8,8 @@ class TweetList extends Component {
             return <TweetComponent data={tweet} />
         });
         return (
-            <div className="tweets">
-                <table className="table">
+            <div className="tweets" key='tweetList'>
+                <Table>
                     <thead>
                         <th scope="col">Created At</th>
                         <th scope="col">Username</th>
@@ -17,7 +18,7 @@ class TweetList extends Component {
                     <tbody>
                         {tweetList}
                     </tbody>
-                </table>
+                </Table>
             </div>
         )
     }
