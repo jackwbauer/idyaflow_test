@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search.jsx'
 import TwitterLogin from 'react-twitter-auth'
+import TweetList from './TweetList.jsx'
 import axios from 'axios'
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -35,10 +36,7 @@ class App extends Component {
   };
 
   newSearch(input) {
-    // send search term to express server to perform twitter search
-
     this.setState({ searchInput: input });
-    console.log(input);
 
     axios({
       method: 'post',
@@ -47,12 +45,17 @@ class App extends Component {
         search: input
       }
     })
-    .then((res) => {
-      console.log(res.results);
-    })
-    .catch((error) => {
-      console.log(error.response);
-    })
+      .then((res) => {
+        console.log(res.data.results);
+        this.setState({ searchResults: res.data.results.statuses });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      })
+  }
+
+  displayTweets() {
+
   }
 
   render() {
@@ -62,7 +65,7 @@ class App extends Component {
           onFailure={this.onFailed} onSuccess={this.onSuccess}
           requestTokenUrl="http://localhost:3001/api/v1/auth/twitter/reverse" />
         <Search newSearch={this.newSearch} />
-        <h2>{this.state.searchResults}</h2>
+        <TweetList tweets={this.state.searchResults}></TweetList>
       </div>
     );
   }

@@ -37,20 +37,12 @@ app.listen(PORT, () => {
 });
 
 app.post('/search', function (req, res) {
-    console.log(`post: ${JSON.stringify(req.body)}`);
-})
-
-app.get('/tweets', function (req, res) {
-    const search = req.body;
     var results;
-    console.log(`get: ${JSON.stringify(search)}`);
-    // perform search here
-    twitter.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function (err, data, response) {
-        results = data;
-        // console.log(data);
-    })
-        .then(res.send({results}));
-    // console.log(results);
+    const body = req.body;
+    const search = body.search;
+    twitter.get('search/tweets', { q: search, count: 100 }, function (err, data, response) {
+        res.send({results: data});
+    });
 })
 
 twitter.get('account/verify_credentials', { skip_status: true })
@@ -58,13 +50,6 @@ twitter.get('account/verify_credentials', { skip_status: true })
         console.log('caught error', err.stack)
     })
     .then(function (result) {
-        // `result` is an Object with keys "data" and "resp".
-        // `data` and `resp` are the same objects as the ones passed
-        // to the callback.
-        // See https://github.com/ttezel/twit#tgetpath-params-callback
-        // for details.
-
-        // console.log('data', result.data);
     })
 
 // Following code is from the react-twitter-auth npm package's github example
