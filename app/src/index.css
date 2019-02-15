@@ -8,15 +8,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
   }
   
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-.searchBar {
-    padding: 1em;
-}
-
-.searchInput {
-    width: 100em;
-}
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
