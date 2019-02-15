@@ -7,10 +7,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/tweets', function (req, res) {
-    
-})
-
 app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}`);
+    console.log(`Server listening on port ${PORT}`);
   });
+
+app.get('/tweets', function (req, res) {
+    res.send( {express: 'Hi from Express server'})
+    // perform search here
+})

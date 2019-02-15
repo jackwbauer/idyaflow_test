@@ -6,14 +6,32 @@ class App extends Component {
     super();
     this.state = {
       searchInput: '',
-      searchResults: []
+      searchResults: [],
+      data: null
     }
     this.newSearch = this.newSearch.bind(this);
   }
 
+  componentDidMount() {
+    this.callBackendAPI()
+      .then(res => this.setState({ data: res.express }))
+      .catch(err => console.log(err));
+  }
+
+  callBackendAPI = async () => {
+    const response = await fetch('/tweets');
+    const body = await response.json();
+
+    if(response.status !== 200) {
+      throw Error(body.message);
+    }
+    return body;
+  };
+
   newSearch(input) {
-    // perform twitter search
-    this.setState.searchInput = input;
+    // send search term to express server to perform twitter search
+
+    this.setState({searchInput: input});
     console.log(input);
   }
 
@@ -21,7 +39,7 @@ class App extends Component {
     return (
       <div>
         <Search newSearch={this.newSearch}/>
-        <h2>{this.state.searchInput}</h2>
+        <h2>{this.state.searchResults}</h2>
       </div>
     );
   }
